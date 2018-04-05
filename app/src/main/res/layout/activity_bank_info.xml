@@ -12,8 +12,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="27dp"
-        android:layout_marginStart="27dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="33dp"
         app:srcCompat="@android:drawable/star_on" />
 
@@ -24,7 +24,7 @@
         android:layout_alignLeft="@+id/imageView"
         android:layout_alignStart="@+id/imageView"
         android:layout_below="@+id/imageView"
-        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="10dp"
         android:text="Полное наименование" />
 
     <TextView
@@ -33,10 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/tvFullName_"
         android:layout_alignBottom="@+id/tvFullName_"
-        android:layout_marginLeft="35dp"
-
-
-
+        android:layout_marginLeft="25dp"
         android:text="AVANGARD" />
     <TextView
         android:id="@+id/tvWebSite_"
@@ -44,8 +41,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/tvFullName_"
         android:layout_below="@+id/tvFullName_"
-        android:layout_marginEnd="105dp"
-        android:layout_marginRight="105dp"
+        android:layout_marginBottom="10dp"
+
         android:text="Адрес сайта" />
 
 
@@ -53,9 +50,9 @@
         android:id="@+id/tvWebSite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/tvHeader"
         android:layout_alignLeft="@+id/tvFullName"
-        android:layout_alignStart="@+id/tvFullName"
+        android:layout_toRightOf="@+id/tvWebSite_"
+        android:layout_alignBottom="@+id/tvWebSite_"
         android:text="TextView" />
     <TextView
         android:id="@+id/tvHeader"
@@ -67,7 +64,7 @@
         android:layout_alignStart="@+id/tvFullName_" />
 
     <ListView
-        android:id="@+id/lvMain"
+        android:id="@+id/lvOffices"
         android:layout_width="wrap_content"
         android:layout_height="152dp"
         android:layout_alignLeft="@+id/tvHeader"
@@ -80,7 +77,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/lvMain">
+        android:layout_below="@+id/lvOffices">
 
         <TableRow
             android:layout_width="match_parent"
@@ -115,12 +112,12 @@
                 android:text="USD" />
 
             <TextView
-                android:id="@+id/textView11"
+                android:id="@+id/tvBuy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0" />
             <TextView
-                android:id="@+id/textView13"
+                android:id="@+id/tvSell"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0" />

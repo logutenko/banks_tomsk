@@ -5,6 +5,7 @@ package com.example.masha.bankitomsk.presentation.main;
  */
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,7 +16,8 @@ import android.widget.TextView;
 import com.example.masha.bankitomsk.R;
 import com.example.masha.bankitomsk.data.Bank;
 import com.example.masha.bankitomsk.domain.BanksModel;
-import com.example.masha.bankitomsk.domain.HTMLParser;
+import com.example.masha.bankitomsk.presentation.details.BankDetailsActivity;
+
 
 import java.util.List;
 
@@ -31,6 +33,7 @@ public class BanksListActivity extends AppCompatActivity {
 
     private BanksListAdapter adapter;
     private BanksPresenter presenter;
+
 
 
 
@@ -56,6 +59,18 @@ public class BanksListActivity extends AppCompatActivity {
         rvBanksList = findViewById(R.id.rvBanksList);
         rvBanksList.setLayoutManager(layoutManager);
         rvBanksList.setAdapter(adapter);
+        rvBanksList.addOnItemTouchListener(new RecyclerItemClickListener(this, rvBanksList ,new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+                        Intent intent=new Intent(BanksListActivity.this, BankDetailsActivity.class);
+                        intent.putExtra("URL",adapter.getLink(position));
+                        startActivity(intent);
+                    }
+
+                    @Override public void onLongItemClick(View view, int position) {
+                        // do whatever
+                    }
+                })
+        );
 
         BanksModel model = new BanksModel();
         presenter = new BanksPresenter(model);

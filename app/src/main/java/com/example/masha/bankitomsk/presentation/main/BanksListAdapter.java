@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.example.masha.bankitomsk.R;
 import com.example.masha.bankitomsk.data.Bank;
+import com.example.masha.bankitomsk.data.Currency;
 
 
 import java.util.LinkedList;
@@ -25,7 +26,7 @@ public class BanksListAdapter extends RecyclerView.Adapter<BanksListAdapter.View
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.bank_item, parent, false);
         return new ViewHolder(view);
     }
 
@@ -49,6 +50,10 @@ public class BanksListAdapter extends RecyclerView.Adapter<BanksListAdapter.View
 
     }
 
+    public String getLink(int position){
+        return banks.get(position).getInnerLink();
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView tvName, tvBuyCurrency1, tvSellCurrency1,
@@ -60,17 +65,25 @@ public class BanksListAdapter extends RecyclerView.Adapter<BanksListAdapter.View
             tvName = itemView.findViewById(R.id.tvName);
             tvBuyCurrency1 = itemView.findViewById(R.id.tvBuyCurrency1);
             tvSellCurrency1 = itemView.findViewById(R.id.tvSellCurrency1);
-            tvBuyCurrency2 = itemView.findViewById(R.id.tvBuyCurrency2);
-            tvSellCurrency2 = itemView.findViewById(R.id.tvSellCurrency2);
+           /* tvBuyCurrency2 = itemView.findViewById(R.id.tvBuyCurrency2);
+            tvSellCurrency2 = itemView.findViewById(R.id.tvSellCurrency2);*/
 
         }
 
         void bind(Bank bank) {
             tvName.setText(bank.getName());
-            tvBuyCurrency1.setText(bank.getRateToBuy().get("USD"));
-            tvSellCurrency1.setText(bank.getRateToSell().get("USD"));
-            //tvBuyCurrency2.setText(bank.getRateToBuy().get("EUR"));
-            //tvSellCurrency2.setText(bank.getRateToSell().get("EUR"));
+            List<Currency> currencyList = bank.getCurrencies();
+            for(Currency currency:currencyList){
+                if (currency.getName().equals("USD")){
+                    tvBuyCurrency1.setText(currency.getRateToBuy());
+                    tvSellCurrency1.setText(currency.getRateToSell());
+                }
+                /*if (currency.getName().equals("EUR")){
+                    tvBuyCurrency2.setText(currency.getRateToBuy());
+                    tvSellCurrency2.setText(currency.getRateToSell());
+                }*/
+            }
+
         }
     }
 

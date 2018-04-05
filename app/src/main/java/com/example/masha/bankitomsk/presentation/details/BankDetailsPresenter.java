@@ -1,20 +1,22 @@
 package com.example.masha.bankitomsk.presentation.details;
 
-import com.example.masha.bankitomsk.domain.BanksModel;
+import com.example.masha.bankitomsk.data.Bank;
+import com.example.masha.bankitomsk.domain.BankDetailsModel;
+
 
 /**
  * Created by masha on 03.04.2018.
  */
 
 public class BankDetailsPresenter {
-    private BanksModel model;
-    private BankInfoActivity view;
+    private BankDetailsModel model;
+    private BankDetailsActivity view;
 
-    public BankDetailsPresenter (BanksModel model){
+    public BankDetailsPresenter (BankDetailsModel model){
         this.model = model;
     }
 
-    public void attachView(BankInfoActivity view){
+    public void attachView(BankDetailsActivity view){
         this.view = view;
     }
 
@@ -23,6 +25,12 @@ public class BankDetailsPresenter {
     }
 
     public void showInfo(){
+        model.getBankDetails(new BankDetailsModel.GetBankDetailsCallback() {
+            @Override
+            public void getDetails(Bank bank) {
+                view.showDetails(bank);
+            }
+        });
 
     }
 }
