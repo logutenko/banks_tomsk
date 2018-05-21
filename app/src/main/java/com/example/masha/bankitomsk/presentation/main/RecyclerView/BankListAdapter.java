@@ -1,4 +1,4 @@
-package com.example.masha.bankitomsk.presentation.main;
+package com.example.masha.bankitomsk.presentation.main.RecyclerView;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -19,7 +19,7 @@ import java.util.List;
  * Created by masha on 22.03.2018.
  */
 
-public class BanksListAdapter extends RecyclerView.Adapter<BanksListAdapter.ViewHolder> {
+public class BankListAdapter extends RecyclerView.Adapter<BankListAdapter.ViewHolder> {
 
     List<Bank> banks = new LinkedList<>();
 
@@ -51,7 +51,7 @@ public class BanksListAdapter extends RecyclerView.Adapter<BanksListAdapter.View
     }
 
     public String getLink(int position){
-        return banks.get(position).getInnerLink();
+        return banks.get(position).getDetailsUrl();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

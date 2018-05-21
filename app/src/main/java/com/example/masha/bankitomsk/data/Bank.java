@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Bank {
     private String name;
-    private String innerLink;
+    private String detailsUrl;
     private String webSite;
     private List<Office> offices = new ArrayList<>();
     private List<Currency> currencies = new ArrayList<>();
@@ -23,12 +23,12 @@ public class Bank {
         this.name = name;
     }
 
-    public String getInnerLink() {
-        return innerLink;
+    public String getDetailsUrl() {
+        return detailsUrl;
     }
 
-    public void setInnerLink(String innerLink) {
-        this.innerLink = innerLink;
+    public void setDetailsUrl(String detailsUrl) {
+        this.detailsUrl = detailsUrl;
     }
 
     public String getWebSite() {

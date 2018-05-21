@@ -9,44 +9,16 @@ import com.example.masha.bankitomsk.data.Bank;
  */
 
 public class BankDetailsModel {
-    private final HTMLParser htmlParser;
-    private String url;
 
 
-    public BankDetailsModel(String url){
+     public void getBankDetails(String url, BankDetailsCallback callback){
 
-        this.url = url;
-        htmlParser = new HTMLParser();
-    }
-
-    public void getBankDetails(GetBankDetailsCallback callback){
-
-        GetBankDetailsTask getBankDetailsTask = new GetBankDetailsTask(callback);
+        BankDetailsTask getBankDetailsTask = new BankDetailsTask(url, callback);
         getBankDetailsTask.execute();
     }
 
-    public interface GetBankDetailsCallback{
+    public interface BankDetailsCallback{
         public void getDetails(Bank bank);
     }
 
-    class GetBankDetailsTask extends AsyncTask<Void, Void, Bank> {
-
-        private final GetBankDetailsCallback callback;
-
-        GetBankDetailsTask(GetBankDetailsCallback callback){
-            this.callback = callback;
-        }
-        @Override
-        protected Bank doInBackground(Void... params) {
-
-            htmlParser.setURL(url);
-            return htmlParser.parseBankDetails();
-
-        }
-
-        protected void onPostExecute(Bank result) {
-            super.onPostExecute(result);
-            callback.getDetails(result);
-        }
-    }
 }

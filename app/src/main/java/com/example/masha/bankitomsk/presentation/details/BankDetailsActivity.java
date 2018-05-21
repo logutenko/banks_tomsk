@@ -2,55 +2,70 @@ package com.example.masha.bankitomsk.presentation.details;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ListView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.widget.TextView;
 
 import com.example.masha.bankitomsk.R;
 import com.example.masha.bankitomsk.data.Bank;
-import com.example.masha.bankitomsk.data.Office;
-import com.example.masha.bankitomsk.domain.BankDetailsModel;
+import com.example.masha.bankitomsk.data.Currency;
+import com.example.masha.bankitomsk.presentation.common.ItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class BankDetailsActivity extends AppCompatActivity {
 
     private BankDetailsPresenter presenter;
-    private TextView tvFullName, tvWebSite,tvBuy, tvSell;
-    private ListView lvOffices;
-    private ArrayList<Office> listItems;
+    private TextView tvWebSite, tvBuy, tvSell;
+    private RecyclerView rvOffices;
     private OfficeListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bank_info);
-
+        setContentView(R.layout.activity_bank_details);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //init
-        tvFullName = findViewById(R.id.tvFullName);
         tvWebSite = findViewById(R.id.tvWebSite);
         tvBuy = findViewById(R.id.tvBuy);
         tvSell = findViewById(R.id.tvSell);
-        lvOffices = findViewById(R.id.lvOffices);
-        listItems = new ArrayList<Office>();
-        listItems.add(new Office("test", "123"));
-        adapter = new OfficeListAdapter(this, R.layout.office_item, listItems);
-        lvOffices.setAdapter(adapter);
+        rvOffices = findViewById(R.id.rvOffices);
+        adapter = new OfficeListAdapter();
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        rvOffices.setLayoutManager(layoutManager);
+        rvOffices.setAdapter(adapter);
+        rvOffices.addItemDecoration(new ItemDecoration(this, R.drawable.divider));
         String url = getIntent().getStringExtra("URL");
-        tvFullName.setText(url);
-        BankDetailsModel model = new BankDetailsModel(url);
-        presenter = new BankDetailsPresenter(model);
+        //!!!!!!!put url to constructor
+        presenter = new BankDetailsPresenter();
+        presenter.setDetailsUrl(url);
         presenter.attachView(this);
-        presenter.showInfo();
+
 
     }
 
-    public void showDetails(Bank bank){
-        tvFullName.setText(bank.getName());
-        tvWebSite.setText(bank.getWebSite());
-        listItems = (ArrayList)bank.getOffices();
-        adapter.setData(listItems);
+    public void showDetails(Bank bank) {
 
+        getSupportActionBar().setTitle(bank.getName());
+        tvWebSite.setClickable(true);
+        tvWebSite.setMovementMethod(LinkMovementMethod.getInstance());
+        String text = "<a href='http://" + bank.getWebSite() + "'>" + bank.getWebSite() + "</a>";
+
+        tvWebSite.setText(Html.fromHtml(text));
+        //tvWebSite.setText(bank.getWebSite());
+        List<Currency> currencyList = bank.getCurrencies();
+        for (Currency currency : currencyList) {
+            if (currency.getName().equals("USD")) {
+                tvBuy.setText(currency.getRateToBuy());
+                tvSell.setText(currency.getRateToSell());
+            }
+        }
+        adapter.setData((ArrayList) bank.getOffices());
     }
 
     @Override

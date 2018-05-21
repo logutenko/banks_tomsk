@@ -43,16 +43,16 @@ case "`uname`" in
 esac
 
 # Attempt to set APP_HOME
-# Resolve links: $0 may be a innerLink
+# Resolve links: $0 may be a link
 PRG="$0"
 # Need this for relative symlinks.
 while [ -h "$PRG" ] ; do
     ls=`ls -ld "$PRG"`
-    innerLink=`expr "$ls" : '.*-> \(.*\)$'`
-    if expr "$innerLink" : '/.*' > /dev/null; then
-        PRG="$innerLink"
+    link=`expr "$ls" : '.*-> \(.*\)$'`
+    if expr "$link" : '/.*' > /dev/null; then
+        PRG="$link"
     else
-        PRG=`dirname "$PRG"`"/$innerLink"
+        PRG=`dirname "$PRG"`"/$link"
     fi
 done
 SAVED="`pwd`"
