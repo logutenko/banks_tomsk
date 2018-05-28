@@ -11,17 +11,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
 import com.example.masha.bankitomsk.R;
 import com.example.masha.bankitomsk.data.Bank;
 import com.example.masha.bankitomsk.domain.BanksModel;
+import com.example.masha.bankitomsk.presentation.common.ItemDecoration;
 import com.example.masha.bankitomsk.presentation.details.BankDetailsActivity;
 import com.example.masha.bankitomsk.presentation.main.RecyclerView.BankListAdapter;
-import com.example.masha.bankitomsk.presentation.common.ItemDecoration;
 import com.example.masha.bankitomsk.presentation.main.RecyclerView.RecyclerItemClickListener;
-
 
 import java.util.List;
 

@@ -1,8 +1,5 @@
 package com.example.masha.bankitomsk.domain;
 
-import android.content.Context;
-import android.widget.Toast;
-
 import com.example.masha.bankitomsk.data.Bank;
 import com.example.masha.bankitomsk.data.Currency;
 import com.example.masha.bankitomsk.data.Office;
@@ -174,7 +171,7 @@ public class HTMLParser {
         pattern = Pattern.compile(regexCurrency, Pattern.DOTALL);
         matcher = pattern.matcher(source);
         if (matcher.find()) {
-            Currency currency = new Currency(matcher.group(1),matcher.group(2), matcher.group(3));
+            Currency currency = new Currency(matcher.group(1), matcher.group(2), matcher.group(3));
             bank.addCurrency(currency);
         }
         return bank;

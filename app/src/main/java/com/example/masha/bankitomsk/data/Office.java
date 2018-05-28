@@ -8,7 +8,7 @@ public class Office {
     private String address;
     private String phone;
 
-    public Office(String address, String phone){
+    public Office(String address, String phone) {
         this.address = address;
         this.phone = phone;
     }
