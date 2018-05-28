@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class BankDetailsActivity extends AppCompatActivity {
+public class BankDetailsActivity extends AppCompatActivity implements IBankDetailsView {
 
     private BankDetailsPresenter presenter;
     private TextView tvWebSite, tvBuy, tvSell;
@@ -40,10 +40,8 @@ public class BankDetailsActivity extends AppCompatActivity {
         rvOffices.setLayoutManager(layoutManager);
         rvOffices.setAdapter(adapter);
         rvOffices.addItemDecoration(new ItemDecoration(this, R.drawable.divider));
-        String url = getIntent().getStringExtra("URL");
-        //!!!!!!!put url to constructor
-        presenter = new BankDetailsPresenter();
-        presenter.setDetailsUrl(url);
+        String url = getIntent().getStringExtra(getString(R.string.key_URL));
+        presenter = new BankDetailsPresenter(url);
         presenter.attachView(this);
 
 
@@ -57,10 +55,9 @@ public class BankDetailsActivity extends AppCompatActivity {
         String text = "<a href='http://" + bank.getWebSite() + "'>" + bank.getWebSite() + "</a>";
 
         tvWebSite.setText(Html.fromHtml(text));
-        //tvWebSite.setText(bank.getWebSite());
         List<Currency> currencyList = bank.getCurrencies();
         for (Currency currency : currencyList) {
-            if (currency.getName().equals("USD")) {
+            if (currency.getName().equals(getString(R.string.usd))) {
                 tvBuy.setText(currency.getRateToBuy());
                 tvSell.setText(currency.getRateToSell());
             }

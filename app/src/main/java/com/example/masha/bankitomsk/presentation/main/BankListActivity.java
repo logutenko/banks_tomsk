@@ -29,7 +29,7 @@ import java.util.List;
  * Created by masha on 20.03.2018.
  */
 
-public class BankListActivity extends AppCompatActivity implements BanksPresenter.ShowBankList {
+public class BankListActivity extends AppCompatActivity implements IBanksView {
 
     private RecyclerView rvBanksList;
 
@@ -53,7 +53,7 @@ public class BankListActivity extends AppCompatActivity implements BanksPresente
                     @Override
                     public void onItemClick(View view, int position) {
                         Intent intent = new Intent(BankListActivity.this, BankDetailsActivity.class);
-                        intent.putExtra("URL", adapter.getLink(position));
+                        intent.putExtra(getString(R.string.key_URL), adapter.getLink(position));
                         startActivity(intent);
                     }
 
@@ -63,8 +63,8 @@ public class BankListActivity extends AppCompatActivity implements BanksPresente
                     }
                 })
         );
-        getSupportActionBar().setTitle("Курсы валют Томских банков");
-        BanksModel model = new BanksModel();
+        getSupportActionBar().setTitle(getString(R.string.currency_rate_Tomsk));
+        BanksModel model = new BanksModel(getString(R.string.base_url));
         presenter = new BanksPresenter(model);
         presenter.attachView(this);
         presenter.loadBanks();

@@ -15,7 +15,7 @@
             android:id="@+id/rvOffices"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/main_margin"
             android:scrollbars="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -26,8 +26,8 @@
             android:id="@+id/ivWeb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginEnd="@dimen/main_margin"
+            android:layout_marginTop="@dimen/main_margin"
             android:tint="@color/colorImage"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rvOffices"
@@ -38,7 +38,7 @@
             android:id="@+id/tvWebSite"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="@dimen/main_margin"
             android:textColorLink="@color/colorLink"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/ivWeb"
@@ -49,9 +49,9 @@
             style="@style/TableHeader"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="Курс валют"
+            android:layout_marginStart="@dimen/main_margin"
+            android:layout_marginTop="@dimen/main_margin"
+            android:text="@string/currency_rate"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvWebSite" />
 
@@ -60,9 +60,9 @@
             style="@style/TableHeader"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="32dp"
+            android:layout_marginEnd="@dimen/double_margin"
             android:gravity="right"
-            android:text="Покупка"
+            android:text="@string/buy"
             app:layout_constraintEnd_toStartOf="@+id/textView12"
             app:layout_constraintTop_toTopOf="@+id/textView8" />
 
@@ -71,9 +71,9 @@
             style="@style/TableHeader"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="@dimen/main_margin"
             android:gravity="right"
-            android:text="Продажа"
+            android:text="@string/sell"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textView8" />
 
@@ -83,10 +83,10 @@
             style="@style/PlainText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:text="USD"
+            android:layout_marginBottom="@dimen/main_margin"
+            android:layout_marginStart="@dimen/main_margin"
+            android:layout_marginTop="@dimen/half_margin"
+            android:text="@string/usd"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView8" />
@@ -97,7 +97,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="right"
-            android:text="-"
+            android:text="@string/no_info"
             app:layout_constraintEnd_toEndOf="@+id/textView9"
             app:layout_constraintTop_toTopOf="@+id/textView10" />
 
@@ -107,7 +107,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="right"
-            android:text="-"
+            android:text="@string/no_info"
             app:layout_constraintEnd_toEndOf="@+id/textView12"
             app:layout_constraintTop_toTopOf="@+id/tvBuy" />
 

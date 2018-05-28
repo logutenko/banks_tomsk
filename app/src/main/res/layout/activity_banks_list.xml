@@ -17,7 +17,7 @@
             android:layout_marginLeft="@dimen/main_margin"
             android:layout_marginTop="@dimen/main_margin"
             android:layout_weight="1"
-            android:text="Банк" />
+            android:text="@string/bank" />
 
         <TextView
             style="@style/TableHeader"
@@ -26,16 +26,16 @@
             android:layout_marginRight="@dimen/main_margin"
             android:layout_marginTop="@dimen/main_margin"
             android:gravity="center"
-            android:text="Покупка" />
+            android:text="@string/buy" />
 
         <TextView
             style="@style/TableHeader"
             android:layout_width="@dimen/collumn_width"
             android:layout_height="wrap_content"
-            android:layout_marginRight="32dp"
+            android:layout_marginRight="@dimen/double_margin"
             android:layout_marginTop="@dimen/main_margin"
             android:gravity="center"
-            android:text="Продажа" />
+            android:text="@string/sell" />
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
