@@ -26,8 +26,7 @@ public class OfficeListAdapter extends RecyclerView.Adapter<OfficeListAdapter.Vi
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.office_item, parent, false);
-        return new ViewHolder(view);
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.office_item, parent, false));
     }
 
     @Override
@@ -47,6 +46,7 @@ public class OfficeListAdapter extends RecyclerView.Adapter<OfficeListAdapter.Vi
         offices.addAll(officesUpdate);
         notifyDataSetChanged();
     }
+
     class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView tvAddress, tvPhone;

@@ -10,23 +10,24 @@ import com.example.masha.bankitomsk.domain.BankDetailsModel;
 
 public class BankDetailsPresenter {
     private BankDetailsModel model;
-    private BankDetailsActivity view;
+    private IBankDetailsView view;
     private String detailsUrl;
 
-    public BankDetailsPresenter (){
+    public BankDetailsPresenter(String url) {
+        detailsUrl = url;
         model = new BankDetailsModel();
     }
 
-    public void attachView(BankDetailsActivity view){
+    public void attachView(IBankDetailsView view) {
         this.view = view;
         showInfo();
     }
 
-    public void detachView(){
+    public void detachView() {
         view = null;
     }
 
-    public void showInfo(){
+    public void showInfo() {
         model.getBankDetails(detailsUrl, new BankDetailsModel.BankDetailsCallback() {
             @Override
             public void getDetails(Bank bank) {
@@ -36,7 +37,4 @@ public class BankDetailsPresenter {
 
     }
 
-    public void setDetailsUrl(String detailsUrl) {
-        this.detailsUrl = detailsUrl;
-    }
 }

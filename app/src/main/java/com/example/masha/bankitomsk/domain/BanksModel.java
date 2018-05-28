@@ -13,15 +13,21 @@ import java.util.List;
 
 public class BanksModel {
 
+    private String url;
 
-    public void loadBanks(LoadBanksCallback callback){
+    public BanksModel(String url) {
+        this.url = url;
+    }
 
-        LoadBankTask loadBankTask = new LoadBankTask(callback);
+
+    public void loadBanks(LoadBanksCallback callback) {
+
+        LoadBankTask loadBankTask = new LoadBankTask(callback, url);
         loadBankTask.execute();
     }
 
-    public interface LoadBanksCallback{
-       public void load(List<Bank> banks);
+    public interface LoadBanksCallback {
+        void load(List<Bank> banks);
     }
 
 }

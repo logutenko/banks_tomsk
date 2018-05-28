@@ -11,14 +11,14 @@ import com.example.masha.bankitomsk.data.Bank;
 public class BankDetailsModel {
 
 
-     public void getBankDetails(String url, BankDetailsCallback callback){
+    public void getBankDetails(String url, BankDetailsCallback callback) {
 
         BankDetailsTask getBankDetailsTask = new BankDetailsTask(url, callback);
         getBankDetailsTask.execute();
     }
 
-    public interface BankDetailsCallback{
-        public void getDetails(Bank bank);
+    public interface BankDetailsCallback {
+        void getDetails(Bank bank);
     }
 
 }

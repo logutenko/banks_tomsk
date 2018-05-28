@@ -73,8 +73,8 @@ public class BankListAdapter extends RecyclerView.Adapter<BankListAdapter.ViewHo
         void bind(Bank bank) {
             tvName.setText(bank.getName());
             List<Currency> currencyList = bank.getCurrencies();
-            for(Currency currency:currencyList){
-                if (currency.getName().equals("USD")){
+            for (Currency currency : currencyList) {
+                if (currency.getName().equals("USD")) {
                     tvBuyCurrency1.setText(currency.getRateToBuy());
                     tvSellCurrency1.setText(currency.getRateToSell());
                 }

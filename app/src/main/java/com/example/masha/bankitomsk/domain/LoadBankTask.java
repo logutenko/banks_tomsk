@@ -14,16 +14,17 @@ import java.util.List;
 class LoadBankTask extends AsyncTask<Void, Void, List<Bank>> {
 
     private final BanksModel.LoadBanksCallback callback;
+    private final String url;
 
-    LoadBankTask(BanksModel.LoadBanksCallback callback){
+    LoadBankTask(BanksModel.LoadBanksCallback callback, String url){
         this.callback = callback;
+        this.url = url;
     }
     @Override
     protected List<Bank> doInBackground(Void... params) {
 
-        HTMLParser htmlParser = new HTMLParser("http://banki.tomsk.ru/pages/41/");
-        List<Bank> banksList = htmlParser.parseBanks();
-        return banksList;
+        HTMLParser htmlParser = new HTMLParser(url);
+        return htmlParser.parseBanks();
     }
 
     protected void onPostExecute(List<Bank> result) {
