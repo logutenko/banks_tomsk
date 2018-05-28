@@ -12,13 +12,13 @@ import com.example.masha.bankitomsk.domain.BanksModel;
 public class BanksPresenter {
 
     private BanksModel model;
-    private BanksListActivity view;
+    private ShowBankList view;
 
     public BanksPresenter (BanksModel model){
         this.model = model;
     }
 
-    public void attachView(BanksListActivity view){
+    public void attachView(ShowBankList view){
         this.view = view;
     }
 
@@ -33,5 +33,9 @@ public class BanksPresenter {
                 view.showBanks(banks);
             }
         });
+    }
+
+    public interface ShowBankList{
+        public void showBanks(List<Bank> banks);
     }
 }

@@ -1,7 +1,7 @@
 package com.example.masha.bankitomsk.data;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by masha on 20.03.2018.
@@ -9,12 +9,10 @@ import java.util.Map;
 
 public class Bank {
     private String name;
-    private String link;
-    private List<String> address;
-    private List<String> phones;
-    private List<Currency> currencies;
-//    private Map<String,String> rateToBuy;
-//    private Map<String,String> rateToSell;
+    private String detailsUrl;
+    private String webSite;
+    private List<Office> offices = new ArrayList<>();
+    private List<Currency> currencies = new ArrayList<>();
 
 
     public String getName() {
@@ -25,43 +23,36 @@ public class Bank {
         this.name = name;
     }
 
-    public String getLink() {
-        return link;
+    public String getDetailsUrl() {
+        return detailsUrl;
     }
 
-    public void setLink(String link) {
-        this.link = link;
+    public void setDetailsUrl(String detailsUrl) {
+        this.detailsUrl = detailsUrl;
     }
 
-    public  String []getAddress() {
-        return address;
+    public String getWebSite() {
+        return webSite;
     }
 
-    public void setAddress(String [] address) {
-        this.address = address;
+    public void setWebSite(String webSite) {
+        this.webSite = webSite;
     }
 
-    public String [] getPhone() {
-        return phone;
+    public List<Office> getOffices() {
+        return offices;
     }
 
-    public void setPhone(String [] phone) {
-        this.phone = phone;
+    public void addOffice(Office office) {
+        offices.add(office);
     }
 
-    public Map<String,String> getRateToBuy() {
-        return rateToBuy;
+    public List<Currency> getCurrencies() {
+        return currencies;
     }
 
-    public void setRateToBuy(Map<String,String> rateToBuy) {
-        this.rateToBuy = rateToBuy;
+    public void addCurrency(Currency currency) {
+        currencies.add(currency);
     }
 
-    public Map<String,String> getRateToSell() {
-        return rateToSell;
-    }
-
-    public void setRateToSell(Map<String,String> rateToSell) {
-        this.rateToSell = rateToSell;
-    }
 }
