@@ -146,34 +146,42 @@ public class HTMLParser {
 
 
     public Bank parseBankDetails() {
-        Bank bank = new Bank();
+        Bank bank = null;
         String source = getSource();
 
-        String regex = "Полное наименование.*?<td[^>]*>(.*?)</td>.*?Адрес сайта.*?<a[^>]*>(.*?)</a>";
-        String regexAdress = "<b>Адрес:</b>\\s*(.*?)</td>.*?Телефон:.*?>\\s*(.*?)<";
+        String regex = "Полное наименование.*?<td[^>]*>(<br>)?(.*?)</td>.*?Адрес сайта.*?<a[^>]*>(.*?)</a>";
+        String regexAddress = "<b>Адрес:</b>\\s*(.*?)</td>.*?</table>";
+        String regexPhone = "Телефон:.*?(\\(38.*?)<";
         String regexCurrency = "<tr.+?td>(\\w+)</td>.+?nobr><img.+?>([\\d.]+).+?<nobr><img.+?>([\\d.]+)";
 
         Pattern pattern = Pattern.compile(regex, Pattern.DOTALL);
-        //find pattern <table class="obzor-table"> ... </tr>
         Matcher matcher = pattern.matcher(source);
 
         if (matcher.find()) {
+            bank = new Bank();
+            bank.setName(matcher.group(2));
+            bank.setWebSite(matcher.group(3));
+            pattern = Pattern.compile(regexCurrency, Pattern.DOTALL);
+            matcher = pattern.matcher(source);
+            if (matcher.find()) {
+                Currency currency = new Currency(matcher.group(1), matcher.group(2), matcher.group(3));
+                bank.addCurrency(currency);
+            }
+            //find pattern <table class="obzor-table"> ... </tr>
+            pattern = Pattern.compile(regexAddress, Pattern.DOTALL);
+            matcher = pattern.matcher(source);
+            while (matcher.find()) {
+                Office office;
+                pattern = Pattern.compile(regexPhone, Pattern.DOTALL);
+                Matcher matchPhone = pattern.matcher(matcher.group(0));
+                if (matchPhone.find())
+                    office = new Office(matcher.group(1), matchPhone.group(1));
+                else office = new Office(matcher.group(1), "-");
+                bank.addOffice(office);
+            }
+        }
 
-            bank.setName(matcher.group(1));
-            bank.setWebSite(matcher.group(2));
-        }
-        pattern = Pattern.compile(regexAdress, Pattern.DOTALL);
-        matcher = pattern.matcher(source);
-        while (matcher.find()) {
-            Office office = new Office(matcher.group(1), matcher.group(2));
-            bank.addOffice(office);
-        }
-        pattern = Pattern.compile(regexCurrency, Pattern.DOTALL);
-        matcher = pattern.matcher(source);
-        if (matcher.find()) {
-            Currency currency = new Currency(matcher.group(1), matcher.group(2), matcher.group(3));
-            bank.addCurrency(currency);
-        }
+
         return bank;
     }
 

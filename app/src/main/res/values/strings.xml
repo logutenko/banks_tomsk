@@ -9,4 +9,6 @@
     <string name="base_url">http://banki.tomsk.ru/pages/41/</string>
     <string name="key_URL">URL</string>
     <string name="currency_rate_Tomsk">Курсы валют Томских банков</string>
+    <string name="no_available_information">Нет информации о банке</string>
+    <string name="unknown">Неизвестно</string>
 </resources>
