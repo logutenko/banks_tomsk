@@ -6,11 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-
 import com.example.masha.bankitomsk.R;
 import com.example.masha.bankitomsk.data.Bank;
 import com.example.masha.bankitomsk.data.Currency;
-
 
 import java.util.LinkedList;
 import java.util.List;
@@ -37,7 +35,7 @@ public class BankListAdapter extends RecyclerView.Adapter<BankListAdapter.ViewHo
     }
 
     @Override
-    public int getItemCount(){
+    public int getItemCount() {
 
         return banks.size();
     }
@@ -50,7 +48,7 @@ public class BankListAdapter extends RecyclerView.Adapter<BankListAdapter.ViewHo
 
     }
 
-    public String getLink(int position){
+    public String getLink(int position) {
         return banks.get(position).getDetailsUrl();
     }
 

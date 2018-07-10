@@ -31,7 +31,8 @@ public class BankDetailsPresenter {
         model.getBankDetails(detailsUrl, new BankDetailsModel.BankDetailsCallback() {
             @Override
             public void getDetails(Bank bank) {
-                view.showDetails(bank);
+                if (bank == null) view.noInfo();
+                else view.showDetails(bank);
             }
         });
 

@@ -1,7 +1,6 @@
 package com.example.masha.bankitomsk.domain;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import com.example.masha.bankitomsk.data.Bank;
 
@@ -16,10 +15,11 @@ class LoadBankTask extends AsyncTask<Void, Void, List<Bank>> {
     private final BanksModel.LoadBanksCallback callback;
     private final String url;
 
-    LoadBankTask(BanksModel.LoadBanksCallback callback, String url){
+    LoadBankTask(BanksModel.LoadBanksCallback callback, String url) {
         this.callback = callback;
         this.url = url;
     }
+
     @Override
     protected List<Bank> doInBackground(Void... params) {
 

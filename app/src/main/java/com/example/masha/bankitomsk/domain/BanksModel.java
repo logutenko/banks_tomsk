@@ -1,8 +1,5 @@
 package com.example.masha.bankitomsk.domain;
 
-import android.os.AsyncTask;
-import android.util.Log;
-
 import com.example.masha.bankitomsk.data.Bank;
 
 import java.util.List;

@@ -8,4 +8,5 @@ import com.example.masha.bankitomsk.data.Bank;
 
 public interface IBankDetailsView {
     void showDetails(Bank bank);
+    void noInfo();
 }
